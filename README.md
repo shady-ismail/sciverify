@@ -1,6 +1,6 @@
 # SciVerify (`v0.3.1`)
 
-[![SciVerify CI](https://github.com/shady-fouad-ismail/sciverify/actions/workflows/ci.yml/badge.svg)](https://github.com/shady-fouad-ismail/sciverify/actions/workflows/ci.yml)
+[![SciVerify CI](https://github.com/shady-ismail/sciverify/actions/workflows/ci.yml/badge.svg)](https://github.com/shady-ismail/sciverify/actions/workflows/ci.yml)
 
 **License:** MIT | **Python:** `3.10–3.13` (`numpy`, `z3-solver`) | **Author:** Shady Fouad Saber Ismail (`ORCID: 0009-0005-3920-2333`)
 

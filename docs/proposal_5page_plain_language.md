@@ -4,7 +4,7 @@
 **Entity Type:** Independent Individual Researcher  
 **Call:** Research Software Catalyst Fund — Exploratory Track (Due December 31, 2026)  
 **Schedule & Total Request:** April 1 – September 30, 2027 (6 Months) | **USD 47,400** (Direct Costs Only)  
-**Open Licensing & Prototype Repository:** **MIT License** (`https://github.com/shady-fouad-ismail/sciverify`); **CC0 / CC BY 4.0** on Zenodo (historical bug benchmark & pilot logs)
+**Open Licensing & Prototype Repository:** **MIT License** (`https://github.com/shady-ismail/sciverify`); **CC0 / CC BY 4.0** on Zenodo (historical bug benchmark & pilot logs)
 
 ## 1. The Verification Problem I Built `SciVerify` to Address
 

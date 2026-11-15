@@ -35,5 +35,5 @@ sciverify = "sciverify.cli"
 include = ["sciverify*", "benchmark*"]
 
 [project.urls]
-Homepage = "https://github.com/shady-fouad-ismail/sciverify"
-Repository = "https://github.com/shady-fouad-ismail/sciverify"
+Homepage = "https://github.com/shady-ismail/sciverify"
+Repository = "https://github.com/shady-ismail/sciverify"

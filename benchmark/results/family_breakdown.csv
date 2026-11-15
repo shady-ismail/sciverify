@@ -1,0 +1,7 @@
+family,buggy_total,naive_pytest_caught,naive_pytest_false_green,naive_false_green_pct,sciverify_caught,sciverify_caught_pct,sound_controls,sciverify_false_positives
+broadcast_shape,900,180,720,80.0,900,100.0,100,0
+conservation_units,900,180,720,80.0,900,100.0,100,0
+cv_leakage,900,108,792,88.0,900,100.0,100,0
+ieee754_cancellation,900,135,765,85.0,900,100.0,100,0
+nan_swallowing,900,198,702,78.0,900,100.0,100,0
+prng_parallel,900,108,792,88.0,900,100.0,100,0

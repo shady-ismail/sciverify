@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sciverify"
+version = "0.3.1"
+description = "Adversarial verification engine breaking circular validation in AI-assisted research software via AST tautology detection, scientific mutation operators, Z3 SMT counterexample synthesis, and metamorphic invariants."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+  {name = "Shady Fouad Saber Ismail"}
+]
+dependencies = [
+  "numpy>=1.24",
+  "z3-solver>=4.12"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering",
+  "Topic :: Software Development :: Testing"
+]
+
+[project.scripts]
+sciverify = "sciverify.cli:main"
+
+[project.entry-points.pytest11]
+sciverify = "sciverify.cli"
+
+[tool.setuptools.packages.find]
+include = ["sciverify*", "benchmark*"]
+
+[project.urls]
+Homepage = "https://github.com/shady-fouad-ismail/sciverify"
+Repository = "https://github.com/shady-fouad-ismail/sciverify"

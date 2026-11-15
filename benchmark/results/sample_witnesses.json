@@ -1,0 +1,128 @@
+[
+  {
+    "case_id": "F1-IEEE754-BUG-0000",
+    "family": "ieee754_cancellation",
+    "subvariant": "one_pass_variance",
+    "test_regime": "P1_tautological",
+    "naive_pytest_passed": true,
+    "sciverify_passed": false,
+    "tautology_flags": [
+      "TAUT-TOY-DOMAIN"
+    ],
+    "defect_code": "DEFECT-IEEE754-SHIFT-CANCELLATION",
+    "smt_theory": "QF_LIA + IEEE-754 binary64 ULP Absorption",
+    "z3_formula": "exists k>=28, spread>=1: 2*k >= 56 (mantissa wipeout of (2^k + x_i)^2)",
+    "witness_description": "Location shift delta=2^28 (2.684e+08) on spread=1.0",
+    "observed_value": {
+      "f(x)": 1.6666666666666667,
+      "f(x+delta)": 0.0
+    },
+    "expected_invariant": "f(x + delta) == f(x) == 1.66666667",
+    "numeric_discrepancy": 1.0
+  },
+  {
+    "case_id": "F2-BROADCAST-BUG-0000",
+    "family": "broadcast_shape",
+    "subvariant": "outer_mse_broadcast",
+    "test_regime": "P1_tautological",
+    "naive_pytest_passed": true,
+    "sciverify_passed": false,
+    "tautology_flags": [
+      "TAUT-TOY-DOMAIN"
+    ],
+    "defect_code": "DEFECT-NUMPY-OUTER-BROADCAST",
+    "smt_theory": "QF_LIA (NumPy Right-Aligned Broadcast Rank/Shape Theory)",
+    "z3_formula": "exists N, D in Z: N >= 3 /\\ D >= 2 /\\ N != D /\\ N != 1 /\\ D != 1",
+    "witness_description": "Rectangular asymmetric tensors (N=5, D=4) breaking square/constant broadcast coincidences",
+    "observed_value": {
+      "vec_out": 3.4237500000000005,
+      "col_out": 4.99875,
+      "col_shape": []
+    },
+    "expected_invariant": "Elementwise MSE == 3.42375000 with rank <= 1",
+    "numeric_discrepancy": 1.5749999999999997
+  },
+  {
+    "case_id": "F3-CVLEAK-BUG-0000",
+    "family": "cv_leakage",
+    "subvariant": "leakage_sub_0",
+    "test_regime": "P1_tautological",
+    "naive_pytest_passed": true,
+    "sciverify_passed": false,
+    "tautology_flags": [
+      "TAUT-SMOKE",
+      "TAUT-TOY-DOMAIN"
+    ],
+    "defect_code": "DEFECT-CAUSAL-FOLD-LEAKAGE",
+    "smt_theory": "QF_LIRA (Causal Index Partition & Information-Flow Non-Interference)",
+    "z3_formula": "exists T, split, delta>=1e5: forall t < split, train_fit(X[0:split]) invariant to X[split:T] + delta",
+    "witness_description": "Canary shock (+1e+05) injected strictly into held-out fold [12:24] testing zero train/past leakage",
+    "observed_value": {
+      "max_train_prefix_shift": 3.4047891413622513
+    },
+    "expected_invariant": "max(|fit(X_clean)[0:split] - fit(X_perturbed)[0:split]|) == 0.0",
+    "numeric_discrepancy": 3.4047891413622513
+  },
+  {
+    "case_id": "F4-CONSERV-BUG-0000",
+    "family": "conservation_units",
+    "subvariant": "stepper_total_sum",
+    "test_regime": "P1_tautological",
+    "naive_pytest_passed": true,
+    "sciverify_passed": false,
+    "tautology_flags": [
+      "TAUT-SMOKE",
+      "TAUT-TOY-DOMAIN"
+    ],
+    "defect_code": "DEFECT-CONSERVATION-DRIFT",
+    "smt_theory": "QF_LIRA (Buckingham-Pi Dimensional Scaling & Multi-Step Conservation)",
+    "z3_formula": "exists alpha in [2.25, 5.0], alpha != 1.0, steps >= 30: sum(u_steps) == sum(u_0) /\\ f(alpha*L) == alpha^k * f(L)",
+    "witness_description": "Non-unit dimensional scale alpha=2.25 and multi-step horizon steps=30 (dt=0.05)",
+    "observed_value": {
+      "initial_total": 0.9999999999999999,
+      "final_total": 0.9990585959510402
+    },
+    "expected_invariant": "sum(u_30) == sum(u_0) == 1.00000000",
+    "numeric_discrepancy": 0.0009414040489597042
+  },
+  {
+    "case_id": "F5-PRNG-BUG-0000",
+    "family": "prng_parallel",
+    "subvariant": "prng_sub_0",
+    "test_regime": "P1_tautological",
+    "naive_pytest_passed": true,
+    "sciverify_passed": false,
+    "tautology_flags": [
+      "TAUT-TOY-DOMAIN",
+      "TAUT-SEED-LOCK"
+    ],
+    "defect_code": "DEFECT-PRNG-WORKER-COLLUSION",
+    "smt_theory": "QF_LIA (Parallel PRNG Stream Disjointness & Pairwise Orthogonality)",
+    "z3_formula": "exists W>=4, N_draws>=128: forall i != j in [0, W), stream(seed, i) != stream(seed, j) /\\ |corr(i,j)| < 0.25",
+    "witness_description": "Multi-worker ensemble (W=4 workers, N=128 draws, seed=100) testing stream independence",
+    "observed_value": {
+      "max_pairwise_abs_corr": 1.0
+    },
+    "expected_invariant": "max_{i != j} |corr(worker_i, worker_j)| < 0.28",
+    "numeric_discrepancy": 1.0
+  },
+  {
+    "case_id": "F6-NAN-BUG-0000",
+    "family": "nan_swallowing",
+    "subvariant": "nan_mean_0",
+    "test_regime": "P1_tautological",
+    "naive_pytest_passed": true,
+    "sciverify_passed": false,
+    "tautology_flags": [],
+    "defect_code": "DEFECT-NAN-DENOMINATOR-DILUTION",
+    "smt_theory": "QF_LIRA (Missing-Data Estimator Invariance & NaN Propagation)",
+    "z3_formula": "exists mu >= 10, n_nan >= 2: |mu * n_valid / (n_valid + n_nan) - mu| >= 3.0",
+    "witness_description": "Non-zero-centered vector (mean=11.0) padded with 3 NaN entries exposing zero-fill dilution",
+    "observed_value": {
+      "f(valid)": 11.0,
+      "f(valid_plus_nans)": 6.285714285714286
+    },
+    "expected_invariant": "f(concat(x, NaN)) == f(x) == 11.00000000",
+    "numeric_discrepancy": 4.714285714285714
+  }
+]

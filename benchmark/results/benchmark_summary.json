@@ -1,0 +1,124 @@
+{
+  "benchmark_version": "0.2.0",
+  "reproducibility_sha256": "316bb5bed8df58deb25c62a4f3a944f64870b8970fad7b3bfc1e156ddd798abd",
+  "wall_clock_seconds": 11.908,
+  "throughput_cases_per_sec": 503.9,
+  "bitblasted_fp64_theorem": {
+    "status": "sat",
+    "smt_theory": "QF_FP (IEEE-754 binary64 bit-blasted)",
+    "theorem": "exists d in Float64: fpAdd(RNE, d, 1.0) == d",
+    "witness_d": "1.66555225454791955286282245651818811893463134765625*(2**53)"
+  },
+  "headline": {
+    "total_executable_cases": 6000,
+    "adversarial_buggy_cases": 5400,
+    "sound_reference_controls": 600,
+    "llm_unit_test_caught_count": 909,
+    "llm_unit_test_caught_pct": 16.83,
+    "llm_unit_test_false_green_missed_count": 4491,
+    "llm_unit_test_false_green_missed_pct": 83.17,
+    "sciverify_caught_count": 5400,
+    "sciverify_detection_rate_pct": 100.0,
+    "sciverify_false_positive_count": 0,
+    "sciverify_false_positive_rate_pct": 0.0,
+    "domain_ast_mutants_evaluated": 13575,
+    "domain_ast_mutants_surviving_llm_tests": 6390,
+    "domain_ast_mutant_survival_rate_pct": 47.07
+  },
+  "by_family": {
+    "ieee754_cancellation": {
+      "buggy_total": 900,
+      "naive_pytest_false_green": 765,
+      "naive_pytest_caught": 135,
+      "sciverify_caught": 900,
+      "sciverify_missed": 0,
+      "sound_controls_total": 100,
+      "sciverify_false_positives": 0,
+      "tautology_flagged_cases": 486,
+      "total_mutants_tested": 2475,
+      "surviving_mutants_under_llm_tests": 180
+    },
+    "broadcast_shape": {
+      "buggy_total": 900,
+      "naive_pytest_false_green": 720,
+      "naive_pytest_caught": 180,
+      "sciverify_caught": 900,
+      "sciverify_missed": 0,
+      "sound_controls_total": 100,
+      "sciverify_false_positives": 0,
+      "tautology_flagged_cases": 840,
+      "total_mutants_tested": 2100,
+      "surviving_mutants_under_llm_tests": 1035
+    },
+    "cv_leakage": {
+      "buggy_total": 900,
+      "naive_pytest_false_green": 792,
+      "naive_pytest_caught": 108,
+      "sciverify_caught": 900,
+      "sciverify_missed": 0,
+      "sound_controls_total": 100,
+      "sciverify_false_positives": 0,
+      "tautology_flagged_cases": 792,
+      "total_mutants_tested": 3300,
+      "surviving_mutants_under_llm_tests": 1218
+    },
+    "conservation_units": {
+      "buggy_total": 900,
+      "naive_pytest_false_green": 720,
+      "naive_pytest_caught": 180,
+      "sciverify_caught": 900,
+      "sciverify_missed": 0,
+      "sound_controls_total": 100,
+      "sciverify_false_positives": 0,
+      "tautology_flagged_cases": 300,
+      "total_mutants_tested": 3300,
+      "surviving_mutants_under_llm_tests": 2115
+    },
+    "prng_parallel": {
+      "buggy_total": 900,
+      "naive_pytest_false_green": 792,
+      "naive_pytest_caught": 108,
+      "sciverify_caught": 900,
+      "sciverify_missed": 0,
+      "sound_controls_total": 100,
+      "sciverify_false_positives": 0,
+      "tautology_flagged_cases": 900,
+      "total_mutants_tested": 1800,
+      "surviving_mutants_under_llm_tests": 1584
+    },
+    "nan_swallowing": {
+      "buggy_total": 900,
+      "naive_pytest_false_green": 702,
+      "naive_pytest_caught": 198,
+      "sciverify_caught": 900,
+      "sciverify_missed": 0,
+      "sound_controls_total": 100,
+      "sciverify_false_positives": 0,
+      "tautology_flagged_cases": 348,
+      "total_mutants_tested": 600,
+      "surviving_mutants_under_llm_tests": 258
+    }
+  },
+  "by_llm_test_regime": {
+    "P1_tautological": {
+      "total": 1890,
+      "naive_false_green": 1890,
+      "sciverify_caught": 1890
+    },
+    "P2_toy_canonical": {
+      "total": 1890,
+      "naive_false_green": 1890,
+      "sciverify_caught": 1890
+    },
+    "P3_relaxed_smoke": {
+      "total": 711,
+      "naive_false_green": 711,
+      "sciverify_caught": 711
+    },
+    "P4_edge_aware": {
+      "total": 909,
+      "naive_false_green": 0,
+      "sciverify_caught": 909
+    }
+  }
+}
